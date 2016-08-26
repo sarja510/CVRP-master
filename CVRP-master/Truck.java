@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class Truck {
 
-	private static final int DEPOT = 1; // index of depot on the map
-	private static final int VEHICLE_CAPACITY = 1500;	//capacity
+	private static final int DEPOT = 25; // index of depot on the map
+	private static final int VEHICLE_CAPACITY = 200;	//capacity
 	
 	private int remaining;
 	private double length;

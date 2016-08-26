@@ -13,9 +13,9 @@ public class CVRP {
 
 	public static void main(String[] args) {
 		
-		int popNum = 100 ;//Integer.parseInt(args[0]);
-		int generation = 30; //Integer.parseInt(args[1]);
-		int crossRate = 90;//Integer.parseInt(args[2]);
+		int popNum =100;//Integer.parseInt(args[0]);
+		int generation = 20; //Integer.parseInt(args[1]);
+		double crossRate = 0.90;//Integer.parseInt(args[2]);
 		double mutationRate = 0.10;//Integer.parseInt(args[3]);
 		CVRP cvrp = new CVRP();		
 		cvrp.run(popNum, generation, crossRate, mutationRate);		
@@ -28,7 +28,7 @@ public class CVRP {
 	}
 
 	/* operation over generation */
-	private void run(int popNum, int generation, int crossRate,
+	private void run(int popNum, int generation, double crossRate,
 			double mutationRate) {
 		initMap();
 		ArrayList<Integer> bestRoute = new ArrayList<Integer>();
@@ -69,7 +69,7 @@ public class CVRP {
 	}
 
 	/* cross over the population one time */
-	private ArrayList<ArrayList<Integer>> crossOver(int crossRate) {
+	private ArrayList<ArrayList<Integer>> crossOver(double crossRate) {
 		ArrayList<ArrayList<Integer>> nextGen = new ArrayList<ArrayList<Integer>>();
 		ArrayList<ArrayList<Integer>> parents = new ArrayList<ArrayList<Integer>>();
 		ArrayList<Integer> parent1 = new ArrayList<Integer>();
@@ -107,7 +107,7 @@ public class CVRP {
 	}
 
 	/* get two parents from populatioin for crossover */
-	private ArrayList<ArrayList<Integer>> getParents(int crossRate) {
+	private ArrayList<ArrayList<Integer>> getParents(double crossRate) {
 		Random random = new Random();
 		ArrayList<ArrayList<Integer>> parent = new ArrayList<ArrayList<Integer>>();
 		int prob = 0;
@@ -154,7 +154,7 @@ public class CVRP {
 		population = new ArrayList<ArrayList<Integer>>();
 		ArrayList<Integer> tmp = new ArrayList<Integer>();
 		for (int i = 0; i < popNum; i++) {
-			tmp = mutationInt(route, 75);
+			tmp = mutationInt(route, 100);
 			population.add(new ArrayList<Integer>(tmp));
 		}
 	}
@@ -353,7 +353,7 @@ public class CVRP {
 		ArrayList<Location> tmpMap = new ArrayList<Location>();
 		map = new ArrayList<Location>();
 		mapRecord = new ArrayList<Location>();
-		for (int i = 0; i < 27; i++) {
+		for (int i = 0; i < 102; i++) {
 			map.add(new Location(i));
 			if (i > 1) {
 				if ((map.get(i).getX_coord() > map.get(DEPOT).getX_coord())
@@ -415,7 +415,7 @@ public class CVRP {
 		map = new ArrayList<Location>(tmpMap);
 
 		Random random = new Random();
-		int ranNum = random.nextInt(25) + 2;
+		int ranNum = random.nextInt(100) + 2;
 		ArrayList<Location> tmp1 = new ArrayList<Location>();
 		ArrayList<Location> tmp2 = new ArrayList<Location>();
 		ArrayList<Location> tmp3 = new ArrayList<Location>();
@@ -432,7 +432,7 @@ public class CVRP {
 			map.add(tmp3.get(i));
 		for (int i = 0; i < tmp2.size(); i++)
 			map.add(tmp2.get(i));
-		for (int i = 0; i < 27; i++)
+		for (int i = 0; i < 102; i++)
 			mapRecord.add(new Location(i));
 	}
 }
